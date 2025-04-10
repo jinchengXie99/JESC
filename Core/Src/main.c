@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "foc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,18 +58,38 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint16_t  ADCraw[3];
+
+FOC foc;
+float addtheta=0.01;
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 
-  ADCraw[0] = hadc1.Instance->JDR1;
-  ADCraw[1] = hadc1.Instance->JDR2;
-  ADCraw[2] = hadc1.Instance->JDR3;
+  foc.RawU = hadc1.Instance->JDR1;
+  foc.RawV = hadc1.Instance->JDR2;
+  foc.RawW = hadc1.Instance->JDR3;
 
   static uint16_t test = 0;
   if (test++ > 65530)
     test = 0;
 
+	foc.theta +=addtheta;
+	foc.d = 0;
+	foc.PWMFullDutyCycle = TIM1->ARR;
+//	foc.q = 0.03;
+	
+	fast_sin_cos(foc.theta,&foc.cos,&foc.sin);
+	
+	// 反park
+	  foc.u_alpha = foc.d * foc.cos - foc.q * foc.sin;
+    foc.u_beta = foc.q * foc.cos + foc.d * foc.sin;
+	
+	// svpwm
+	 foc_svm(foc.u_alpha, foc.u_beta,  foc.PWMFullDutyCycle,
+                &foc.tAout,  &foc.tBout,  &foc.tCout,  &foc.svm_sector);
+	
+	htim1.Instance->CCR1 = foc.tAout;
+	htim1.Instance->CCR2 = foc.tBout;
+	htim1.Instance->CCR3 = foc.tCout;
   //	HAL_Delay(1000);
 
   //    HAL_ADCEx_InjectedStart_IT(&hadc1);
@@ -113,9 +133,9 @@ int main(void)
   MX_ADC2_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
- __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1, 2400);
-	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2, 1200);
-	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_3, 3600);
+  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1, 0);
+	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2, 0);
+	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_3, 0);
 	
 	
 	
@@ -132,8 +152,11 @@ int main(void)
 	 TIM1->ARR = 8000-1;  
   __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 4800-3); // 4800最大占空比  TIM1->CCR4 = 4800-3
                                                      
-
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,1);
+	
   HAL_ADCEx_InjectedStart_IT(&hadc1); // 开启注入中断
+	
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
