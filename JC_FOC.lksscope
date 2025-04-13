@@ -1,104 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <lksscope appVersion="v1.3.5">
     <params>
-        <param value="0" name="linkType"/>
-        <param value="1000000" name="jClock"/>
-        <param value="1000000" name="uClock"/>
-        <param value="" name="commPort"/>
-        <param value="9600" name="commBaud"/>
-        <param value="" name="bleName"/>
-        <param value="" name="localIP"/>
-        <param value="" name="localPort"/>
-        <param value="" name="remoteIP"/>
-        <param value="" name="remotePort"/>
-        <param value="20000000" name="rttAddr"/>
-        <param value="16000" name="rttFreq"/>
-        <param value="10" name="sampleInterval"/>
-        <param value="50" name="uiInterval"/>
-        <param value="100" name="maxPoint"/>
-        <param value="1" name="checkAxf"/>
+        <param name="linkType" value="0"/>
+        <param name="jClock" value="1000000"/>
+        <param name="uClock" value="1000000"/>
+        <param name="commPort" value=""/>
+        <param name="commBaud" value="9600"/>
+        <param name="bleName" value=""/>
+        <param name="localIP" value=""/>
+        <param name="localPort" value=""/>
+        <param name="remoteIP" value=""/>
+        <param name="remotePort" value=""/>
+        <param name="rttAddr" value="20000000"/>
+        <param name="rttFreq" value="16000"/>
+        <param name="sampleInterval" value="10"/>
+        <param name="uiInterval" value="50"/>
+        <param name="maxPoint" value="100"/>
+        <param name="checkAxf" value="1"/>
     </params>
     <layouts>
-        <param value="AdnQywADAAD/////////+AAACgAAAAVwAAACzwAAAVMAAAcwAAAEGwAAAAACAAAACgAAAAAAAAAAFwAACf8AAAVv" name="geometry"/>
-        <param value="AAAA/wAAAAD9AAAAAgAAAAAAAAGJAAADf/wCAAAAAvsAAAAIepdT41v8gioBAAAAUgAAAcAAAAAAAAAAAPwAAAIWAAABuwAAAAAA////+gAAAAACAAAAAvsAAAAIW/xRZVPYkc8BAAAAAP////8AAAAAAAAAAPsAAAAKgepbmk5JU9iRzwEAAAAA/////wAAAAAAAAAAAAAAAQAABfMAAAN//AIAAAAH+wAAAAwAUgBUAFRUfU7kiEwAAAAAAP////8AAAAAAAAAAPsAAAAKAFIAVABUZXBjbgAAAAAA/////wAAAAAAAAAA+wAAAAZbxFtYVmgAAAAAAP////8AAAAAAAAAAPsAAAAIj9CITGXlX9cAAAAAAP////8AAAAAAAAAAPwAAABOAAADhQAAAAAA/////AEAAAAC+wAAAAZm8n6/ADABAAAByQAABAcAAAAAAAAAAPsAAAAGZXBQPAAwAQAABdQAAAGsAAAAAAAAAAD7AAAACGVwY25mPnk6AQAAAFIAAAN/AAAAAAAAAAD7AAAACHU1Zzpjp1I2AAAAAAD/////AAAArAD///8AAAoAAAAE8AAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAADAAAADgB0AG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAAAAAASAHQAbwBvAGwAQgBhAHIAXwAyAQAAAMT/////AAAAAAAAAAAAAAAWAHQAbwBvAGwAQgBhAHIATABvAGcAbwEAAAIJ/////wAAAAAAAAAA" name="state"/>
+        <param name="geometry" value="AdnQywADAAD/////////+AAACgAAAAVwAAACzwAAAVMAAAcwAAAEGwAAAAACAAAACgAAAAAAAAAAFwAACf8AAAVv"/>
+        <param name="state" value="AAAA/wAAAAD9AAAAAgAAAAAAAAGJAAADf/wCAAAAAvsAAAAIepdT41v8gioBAAAAUgAAAcAAAAAAAAAAAPwAAAIWAAABuwAAAAAA////+gAAAAACAAAAAvsAAAAIW/xRZVPYkc8BAAAAAP////8AAAAAAAAAAPsAAAAKgepbmk5JU9iRzwEAAAAA/////wAAAAAAAAAAAAAAAQAABfMAAAN//AIAAAAH+wAAAAwAUgBUAFRUfU7kiEwAAAAAAP////8AAAAAAAAAAPsAAAAKAFIAVABUZXBjbgAAAAAA/////wAAAAAAAAAA+wAAAAZbxFtYVmgAAAAAAP////8AAAAAAAAAAPsAAAAIj9CITGXlX9cAAAAAAP////8AAAAAAAAAAPwAAABOAAADhQAAAAAA/////AEAAAAC+wAAAAZm8n6/ADABAAAByQAABAcAAAAAAAAAAPsAAAAGZXBQPAAwAQAABdQAAAGsAAAAAAAAAAD7AAAACGVwY25mPnk6AQAAAFIAAAN/AAAAAAAAAAD7AAAACHU1Zzpjp1I2AAAAAAD/////AAAArAD///8AAAoAAAAE8AAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAADAAAADgB0AG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAAAAAASAHQAbwBvAGwAQgBhAHIAXwAyAQAAAMT/////AAAAAAAAAAAAAAAWAHQAbwBvAGwAQgBhAHIATABvAGcAbwEAAAIJ/////wAAAAAAAAAA"/>
     </layouts>
     <tabs curPage="0">
-        <tab state="AAAA/wAAAAD9AAAAAgAAAAEAAAitAAAC9fwCAAAACvsAAAAIj9CITGXlX9cAAAAAAP////8AAABdAP////sAAAAMAFIAVABUVH1O5IhMAAAAAAD/////AAAAwAD////7AAAACgBSAFQAVGVwY24AAAAAAP////8AAAEPAP////sAAAAGdvh1NW1BAgAAAoUAAAQMAAAHaQAAAZT7AAAABgBmAG8AYwEAAAAAAAAAuQAAAF0A////+wAAAAZm8n6/ADEBAAAAvQAAAb0AAABIAP////sAAAAGZvJ+vwAyAQAAAn4AAAB3AAAASAD////7AAAABmbyfr8AMwAAAAKTAAABjwAAAEgA////+wAAAAZm8n6/ADQAAAABtwAAAEgAAABIAP////sAAAAGZXBQPAAyAAAAAL8AAABqAAAAXQD///8AAAADAAAIrQAAAcn8AQAAAAH8AAAAAAAACK0AAABjAP////wBAAAAAvsAAAAGZvJ+vwAwAAAAAAAAAAVvAAAAAAAAAAD7AAAABmVwUDwAMAEAAAAAAAAIrQAAAGMA////AAAAAAAAAvUAAAAEAAAABAAAAAgAAAAI/AAAAAA=" checked="1" geometry="AdnQywADAAAAAAAAAAAAAAAACKwAAATBAAAAAAAAAAD//////////wAAAAAAAAAACgAAAAAAAAAAAAAACKwAAATB" title="标签页0"/>
+        <tab geometry="AdnQywADAAAAAAAAAAAAAAAAB2gAAATBAAAAAAAAAAD//////////wAAAAAAAAAACgAAAAAAAAAAAAAAB2gAAATB" state="AAAA/wAAAAD9AAAAAgAAAAEAAAdpAAAC9fwCAAAAC/sAAAAIj9CITGXlX9cAAAAAAP////8AAABdAP////sAAAAMAFIAVABUVH1O5IhMAAAAAAD/////AAAAwAD////7AAAACgBSAFQAVGVwY24AAAAAAP////8AAAEPAP////sAAAAGdvh1NW1BAAAAAAAAAAJWAAAASAD////7AAAABgBmAG8AYwEAAAAAAAAB2wAAAF0A////+wAAAAwAQQBEAEMAUgBhAHcAAAAByQAAAEgAAABIAP////sAAAAOAGYAbwBjAC4AbwB1AHQBAAAB3wAAARYAAABIAP////sAAAAGZvJ+vwAzAAAAAcIAAADnAAAASAD////7AAAABmbyfr8ANAAAAAI8AAAAWwAAAEgA////+wAAAAZlcFA8ADIAAAAAvwAAAGoAAABdAP////sAAAAKAGMAbABhAHIAawAAAAKOAAAAZwAAAEgA////AAAAAwAAB2kAAAHJ/AEAAAAB/AAAAAAAAAdpAAAAYwD////8AQAAAAL7AAAABmbyfr8AMAAAAAAAAAAFbwAAAAAAAAAA+wAAAAZlcFA8ADABAAAAAAAAB2kAAABjAP///wAAAAAAAAL1AAAABAAAAAQAAAAIAAAACPwAAAAA" checked="1" title="标签页0"/>
     </tabs>
     <forms>
         <form type="0" title="Form"/>
-        <form lv-width="150,100,100,100,100" type="1" title="自定义参数"/>
-        <form lv-width="295,100,100,100,320,100,100,204,100,100" mapFile="./MDK-ARM/JC_FOC/JC_FOC.axf" type="2" title="导入参数"/>
-        <form floating="0" page="0" visible="0" type="3" title="运行日志"/>
-        <form floating="0" syncFilePath="" encode="GBK" sync2File="0" page="0" visible="0" type="4" title="RTT命令行" checkTStamp="0"/>
-        <form floating="0" scrollType="0" xTag="0" min="-500" lineStyle="1" trigValue="0" page="0" visible="0" type="5" scatterStyle="1" xCount="1000" subMode="0" max="500" autoRange="1" trigType="0" title="RTT数据" trigName=""/>
-        <form floating="0" lv-width="150,100,100,100,100" page="-1" visible="0" type="12" title="电机控制">
-            <var upper="100" desc="速度设定" step="1" name="" lower="0"/>
-            <var upper="100" desc="电流设定" step="1" name="" lower="0"/>
-            <var upper="100" desc="功率设定" step="1" name="" lower="0"/>
-            <var upper="1" desc="电机启停" step="1" name="" lower="0"/>
+        <form type="1" lv-width="150,100,100,100,100" title="自定义参数"/>
+        <form type="2" lv-width="295,100,100,100,320,100,100,204,100,100" title="导入参数" mapFile="./MDK-ARM/JC_FOC/JC_FOC.axf"/>
+        <form visible="0" floating="0" type="3" title="运行日志" page="0"/>
+        <form visible="0" floating="0" type="4" sync2File="0" checkTStamp="0" title="RTT命令行" page="0" encode="GBK" syncFilePath=""/>
+        <form visible="0" floating="0" trigName="" subMode="0" type="5" min="-500" trigType="0" trigValue="0" xCount="1000" title="RTT数据" page="0" autoRange="1" lineStyle="1" scatterStyle="1" scrollType="0" xTag="0" max="500"/>
+        <form visible="0" floating="0" type="12" lv-width="150,100,100,100,100" title="电机控制" page="-1">
+            <var name="" lower="0" step="1" desc="速度设定" upper="100"/>
+            <var name="" lower="0" step="1" desc="电流设定" upper="100"/>
+            <var name="" lower="0" step="1" desc="功率设定" upper="100"/>
+            <var name="" lower="0" step="1" desc="电机启停" upper="1"/>
         </form>
-        <form floating="0" page="-1" visible="0" type="6" title="Form"/>
-        <form floating="0" lv-width="308,150,100,100,100,100,100,120,100,100,100" page="0" visible="1" type="7" title="数值0">
-            <var addr="0x20000160" desc="HAL_ADCEx_InjectedConvCpltCallback##test" interval="10" showType="Unsigned" formula="" color="" name="HAL_ADCEx_InjectedConvCpltCallback##test"/>
-            <var addr="0x20001ed4" desc="uwTick" interval="10" showType="Unsigned" formula="" color="" name="uwTick"/>
-            <var addr="0x20000000" desc="uwTickFreq" interval="10" showType="Enum" formula="" color="" name="uwTickFreq"/>
-            <var addr="0x20000004" desc="uwTickPrio" interval="10" showType="Unsigned" formula="" color="" name="uwTickPrio"/>
-            <var addr="" desc="ADCraw.[0]" interval="10" showType="Unsigned" formula="" color="" name="ADCraw.[0]"/>
-            <var addr="" desc="ADCraw.[1]" interval="10" showType="Unsigned" formula="" color="" name="ADCraw.[1]"/>
-            <var addr="" desc="ADCraw.[2]" interval="10" showType="Unsigned" formula="" color="" name="ADCraw.[2]"/>
-            <var addr="0x20001e44" desc="htim1.Instance->ARR" interval="10" showType="Unsigned" formula="" color="" name="htim1.Instance->ARR"/>
-            <var addr="0x20001e44" desc="htim1.Instance->CCR1" interval="10" showType="Unsigned" formula="" color="" name="htim1.Instance->CCR1"/>
-            <var addr="0x20001e44" desc="htim1.Instance->CCR2" interval="10" showType="Unsigned" formula="" color="" name="htim1.Instance->CCR2"/>
-            <var addr="0x20001e44" desc="htim1.Instance->CCR3" interval="10" showType="Unsigned" formula="" color="" name="htim1.Instance->CCR3"/>
-            <var addr="0x20001e44" desc="htim1.Instance->CCR4" interval="10" showType="Unsigned" formula="" color="" name="htim1.Instance->CCR4"/>
-            <var addr="0x200018a8" desc="hadc1.Instance->JDR1" interval="10" showType="Unsigned" formula="" color="" name="hadc1.Instance->JDR1"/>
-            <var addr="0x200018a8" desc="hadc1.Instance->JDR2" interval="10" showType="Unsigned" formula="" color="" name="hadc1.Instance->JDR2"/>
-            <var addr="0x200018a8" desc="hadc1.Instance->JDR3" interval="10" showType="Unsigned" formula="" color="" name="hadc1.Instance->JDR3"/>
-            <var addr="0x200000f8" desc="addtheta" interval="10" showType="Real" formula="" color="" name="addtheta"/>
-            <var addr="0x20000184" desc="foc.q" interval="10" showType="Real" formula="" color="" name="foc.q"/>
-            <var addr="0x20000180" desc="foc.d" interval="10" showType="Real" formula="" color="" name="foc.d"/>
+        <form visible="0" floating="0" type="6" title="Form" page="-1"/>
+        <form visible="1" floating="0" type="7" lv-width="308,150,100,100,100,100,100,120,100,100,100" title="数值0" page="0">
+            <var name="HAL_ADCEx_InjectedConvCpltCallback##test" addr="" color="" interval="10" showType="Unsigned" desc="HAL_ADCEx_InjectedConvCpltCallback##test" formula=""/>
+            <var name="uwTick" addr="0x20001eac" color="" interval="10" showType="Unsigned" desc="uwTick" formula=""/>
+            <var name="uwTickFreq" addr="0x20000000" color="" interval="10" showType="Enum" desc="uwTickFreq" formula=""/>
+            <var name="uwTickPrio" addr="0x20000004" color="" interval="10" showType="Unsigned" desc="uwTickPrio" formula=""/>
+            <var name="ADCraw.[0]" addr="" color="" interval="10" showType="Unsigned" desc="ADCraw.[0]" formula=""/>
+            <var name="ADCraw.[1]" addr="" color="" interval="10" showType="Unsigned" desc="ADCraw.[1]" formula=""/>
+            <var name="ADCraw.[2]" addr="" color="" interval="10" showType="Unsigned" desc="ADCraw.[2]" formula=""/>
+            <var name="htim1.Instance->ARR" addr="0x20001e1c" color="" interval="10" showType="Unsigned" desc="htim1.Instance->ARR" formula=""/>
+            <var name="htim1.Instance->CCR1" addr="0x20001e1c" color="" interval="10" showType="Unsigned" desc="htim1.Instance->CCR1" formula=""/>
+            <var name="htim1.Instance->CCR2" addr="0x20001e1c" color="" interval="10" showType="Unsigned" desc="htim1.Instance->CCR2" formula=""/>
+            <var name="htim1.Instance->CCR3" addr="0x20001e1c" color="" interval="10" showType="Unsigned" desc="htim1.Instance->CCR3" formula=""/>
+            <var name="htim1.Instance->CCR4" addr="0x20001e1c" color="" interval="10" showType="Unsigned" desc="htim1.Instance->CCR4" formula=""/>
+            <var name="hadc1.Instance->JDR1" addr="0x20001880" color="" interval="10" showType="Unsigned" desc="hadc1.Instance->JDR1" formula=""/>
+            <var name="hadc1.Instance->JDR2" addr="0x20001880" color="" interval="10" showType="Unsigned" desc="hadc1.Instance->JDR2" formula=""/>
+            <var name="hadc1.Instance->JDR3" addr="0x20001880" color="" interval="10" showType="Unsigned" desc="hadc1.Instance->JDR3" formula=""/>
+            <var name="addtheta" addr="" color="" interval="10" showType="Real" desc="addtheta" formula=""/>
+            <var name="foc.q" addr="0x20001578" color="" interval="10" showType="Real" desc="foc.q" formula=""/>
+            <var name="foc.d" addr="0x20001574" color="" interval="10" showType="Real" desc="foc.d" formula=""/>
         </form>
-        <form floating="0" lv-width="150,150,100,100,100,100,100,100,120,100,100" page="0" visible="1" type="7" title="foc">
-            <var addr="0x20000164" desc="foc.RawU" interval="10" showType="Unsigned" formula="" color="" name="foc.RawU"/>
-            <var addr="0x20000168" desc="foc.RawV" interval="10" showType="Unsigned" formula="" color="" name="foc.RawV"/>
-            <var addr="0x2000016c" desc="foc.RawW" interval="10" showType="Unsigned" formula="" color="" name="foc.RawW"/>
-            <var addr="0x20000170" desc="foc.alpha" interval="10" showType="Real" formula="" color="" name="foc.alpha"/>
-            <var addr="0x20000174" desc="foc.beta" interval="10" showType="Real" formula="" color="" name="foc.beta"/>
-            <var addr="0x20000178" desc="foc.u_alpha" interval="10" showType="Real" formula="" color="" name="foc.u_alpha"/>
-            <var addr="0x2000017c" desc="foc.u_beta" interval="10" showType="Real" formula="" color="" name="foc.u_beta"/>
-            <var addr="0x20000180" desc="foc.d" interval="10" showType="Real" formula="" color="" name="foc.d"/>
-            <var addr="0x20000184" desc="foc.q" interval="10" showType="Real" formula="" color="" name="foc.q"/>
-            <var addr="0x20000188" desc="foc.sin" interval="10" showType="Real" formula="" color="" name="foc.sin"/>
-            <var addr="0x2000018c" desc="foc.cos" interval="10" showType="Real" formula="" color="" name="foc.cos"/>
-            <var addr="0x20000190" desc="foc.theta" interval="10" showType="Real" formula="" color="" name="foc.theta"/>
-            <var addr="0x20000194" desc="foc.PWMFullDutyCycle" interval="10" showType="Unsigned" formula="" color="" name="foc.PWMFullDutyCycle"/>
-            <var addr="0x20000198" desc="foc.tAout" interval="10" showType="Signed" formula="" color="" name="foc.tAout"/>
-            <var addr="0x2000019c" desc="foc.tBout" interval="10" showType="Signed" formula="" color="" name="foc.tBout"/>
-            <var addr="0x200001a0" desc="foc.tCout" interval="10" showType="Signed" formula="" color="" name="foc.tCout"/>
-            <var addr="0x200001a4" desc="foc.svm_sector" interval="10" showType="Unsigned" formula="" color="" name="foc.svm_sector"/>
+        <form visible="1" floating="0" type="7" lv-width="150,150,100,100,100,100,100,100,120,100,100" title="foc" page="0">
+            <var name="foc.RawU" addr="" color="" interval="10" showType="Unsigned" desc="foc.RawU" formula=""/>
+            <var name="foc.RawV" addr="" color="" interval="10" showType="Unsigned" desc="foc.RawV" formula=""/>
+            <var name="foc.RawW" addr="" color="" interval="10" showType="Unsigned" desc="foc.RawW" formula=""/>
+            <var name="foc.alpha" addr="0x20001564" color="" interval="10" showType="Real" desc="foc.alpha" formula=""/>
+            <var name="foc.beta" addr="0x20001568" color="" interval="10" showType="Real" desc="foc.beta" formula=""/>
+            <var name="foc.u_alpha" addr="0x2000156c" color="" interval="10" showType="Real" desc="foc.u_alpha" formula=""/>
+            <var name="foc.u_beta" addr="0x20001570" color="" interval="10" showType="Real" desc="foc.u_beta" formula=""/>
+            <var name="foc.d" addr="0x20001574" color="" interval="10" showType="Real" desc="foc.d" formula=""/>
+            <var name="foc.q" addr="0x20001578" color="" interval="10" showType="Real" desc="foc.q" formula=""/>
+            <var name="foc.sin" addr="0x20001584" color="" interval="10" showType="Real" desc="foc.sin" formula=""/>
+            <var name="foc.cos" addr="0x20001588" color="" interval="10" showType="Real" desc="foc.cos" formula=""/>
+            <var name="foc.theta" addr="0x2000158c" color="" interval="10" showType="Real" desc="foc.theta" formula=""/>
+            <var name="foc.PWMFullDutyCycle" addr="0x20001590" color="" interval="10" showType="Unsigned" desc="foc.PWMFullDutyCycle" formula=""/>
+            <var name="foc.tAout" addr="0x20001594" color="" interval="10" showType="Signed" desc="foc.tAout" formula=""/>
+            <var name="foc.tBout" addr="0x20001598" color="" interval="10" showType="Signed" desc="foc.tBout" formula=""/>
+            <var name="foc.tCout" addr="0x2000159c" color="" interval="10" showType="Signed" desc="foc.tCout" formula=""/>
+            <var name="foc.svm_sector" addr="0x200015a0" color="" interval="10" showType="Unsigned" desc="foc.svm_sector" formula=""/>
+            <var name="start" addr="" color="" interval="10" showType="Unsigned" desc="start" formula=""/>
+            <var name="foc.outd" addr="0x2000157c" color="" interval="10" showType="Real" desc="foc.outd" formula=""/>
+            <var name="foc.outq" addr="0x20001580" color="" interval="10" showType="Real" desc="foc.outq" formula=""/>
         </form>
-        <form floating="0" lv-width="150,150,100,100,100,100,100,100,120,100,100" page="0" visible="0" type="7" title="数值2"/>
-        <form refValue="0" scrollType="0" title="相电流" filterType="1" floating="1" min="-500" trigName="" xCount="1000" type="8" scatterStyle="1" visible="0" autoRange="1" trigValue="0" page="0" trigType="0" xTag="0" subMode="0" max="500" lineStyle="1" refName="" refType="0">
-            <var desc="HAL_ADCEx_InjectedConvCpltCallback##test" subPlot="0" color="#ff0000" name="HAL_ADCEx_InjectedConvCpltCallback##test"/>
+        <form visible="0" floating="0" type="7" lv-width="150,150,100,100,100,100,100,100,120,100,100" title="数值2" page="0"/>
+        <form type="8" xCount="1000" page="0" refName="" visible="0" xTag="0" subMode="1" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="相电流">
+            <var name="foc.ia" subPlot="0" color="#ff0000" desc="foc.ia"/>
+            <var name="foc.ib" subPlot="1" color="#00ff00" desc="foc.ib"/>
         </form>
-        <form refValue="0" scrollType="0" title="曲线1" filterType="1" floating="0" min="-500" trigName="" xCount="1000" type="8" scatterStyle="1" visible="1" autoRange="1" trigValue="0" page="0" trigType="0" xTag="0" subMode="0" max="500" lineStyle="1" refName="" refType="0">
-            <var desc="hadc1.Instance->JDR1" subPlot="0" color="#ff0000" name="hadc1.Instance->JDR1"/>
-            <var desc="hadc1.Instance->JDR2" subPlot="0" color="#00ff00" name="hadc1.Instance->JDR2"/>
-            <var desc="hadc1.Instance->JDR3" subPlot="0" color="#00ffff" name="hadc1.Instance->JDR3"/>
+        <form type="8" xCount="1000" page="0" refName="" visible="0" xTag="0" subMode="0" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="ADCRaw">
+            <var name="hadc1.Instance->JDR1" subPlot="0" color="#ff0000" desc="hadc1.Instance->JDR1"/>
+            <var name="hadc1.Instance->JDR2" subPlot="0" color="#00ff00" desc="hadc1.Instance->JDR2"/>
+            <var name="hadc1.Instance->JDR3" subPlot="0" color="#00ffff" desc="hadc1.Instance->JDR3"/>
         </form>
-        <form refValue="0" scrollType="0" title="曲线2" filterType="1" floating="0" min="-500" trigName="" xCount="1000" type="8" scatterStyle="1" visible="1" autoRange="1" trigValue="0" page="0" trigType="0" xTag="0" subMode="0" max="500" lineStyle="1" refName="" refType="0">
-            <var desc="foc.tBout" subPlot="0" color="#ff0000" name="foc.tBout"/>
-            <var desc="foc.tAout" subPlot="0" color="#00ff00" name="foc.tAout"/>
-            <var desc="foc.tCout" subPlot="0" color="#00ffff" name="foc.tCout"/>
+        <form type="8" xCount="1000" page="0" refName="" visible="1" xTag="0" subMode="0" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="foc.out">
+            <var name="foc.tBout" subPlot="0" color="#ff0000" desc="foc.tBout"/>
+            <var name="foc.tAout" subPlot="0" color="#00ff00" desc="foc.tAout"/>
+            <var name="foc.tCout" subPlot="0" color="#00ffff" desc="foc.tCout"/>
         </form>
-        <form refValue="0" scrollType="0" title="曲线3" filterType="1" floating="0" min="-500" trigName="" xCount="1000" type="8" scatterStyle="1" visible="0" autoRange="1" trigValue="0" page="0" trigType="0" xTag="0" subMode="0" max="500" lineStyle="1" refName="" refType="0">
-            <var desc="foc.cos" subPlot="0" color="#ff0000" name="foc.cos"/>
-            <var desc="foc.sin" subPlot="0" color="#00ff00" name="foc.sin"/>
+        <form type="8" xCount="1000" page="0" refName="" visible="0" xTag="0" subMode="0" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="曲线3">
+            <var name="foc.cos" subPlot="0" color="#ff0000" desc="foc.cos"/>
+            <var name="foc.sin" subPlot="0" color="#00ff00" desc="foc.sin"/>
         </form>
-        <form refValue="0" scrollType="0" title="曲线4" filterType="1" floating="0" min="-500" trigName="" xCount="1000" type="8" scatterStyle="1" visible="0" autoRange="1" trigValue="0" page="0" trigType="0" xTag="0" subMode="0" max="500" lineStyle="1" refName="" refType="0">
-            <var desc="foc.u_alpha" subPlot="0" color="#ff0000" name="foc.u_alpha"/>
-            <var desc="foc.u_beta" subPlot="0" color="#00ff00" name="foc.u_beta"/>
+        <form type="8" xCount="1000" page="0" refName="" visible="0" xTag="0" subMode="0" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="曲线4">
+            <var name="foc.u_alpha" subPlot="0" color="#ff0000" desc="foc.u_alpha"/>
+            <var name="foc.u_beta" subPlot="0" color="#00ff00" desc="foc.u_beta"/>
+        </form>
+        <form type="8" xCount="1000" page="0" refName="" visible="0" xTag="0" subMode="0" trigType="0" scatterStyle="1" scrollType="0" refValue="0" filterType="1" floating="0" trigValue="0" refType="0" min="-500" max="500" autoRange="1" lineStyle="1" trigName="" title="clark">
+            <var name="foc.alpha" subPlot="0" color="#ff0000" desc="foc.alpha"/>
+            <var name="foc.beta" subPlot="0" color="#00ff00" desc="foc.beta"/>
         </form>
     </forms>
 </lksscope>

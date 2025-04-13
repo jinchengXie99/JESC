@@ -1,10 +1,4 @@
-
 #include "foc.h"
-
-
-
-
-
 
 /**
  * @brief svm Space vector modulation. Magnitude must not be larger than sqrt(3)/2, or 0.866 to avoid overmodulation.
@@ -16,7 +10,6 @@
  * @param tBout PWM duty cycle phase B
  * @param tCout PWM duty cycle phase C
  */
- 
  
 void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
                 uint32_t* tAout, uint32_t* tBout, uint32_t* tCout, uint32_t *svm_sector) {

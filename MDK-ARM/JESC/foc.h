@@ -20,18 +20,36 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
 
 typedef struct  {
 
-	  uint32_t RawU;
-    uint32_t RawV;
-    uint32_t RawW;
-
+	  uint32_t RawA;
+    uint32_t RawB;
+    uint32_t RawC;
+		
+		float ia,ib,ic; 
+		
+	  uint8_t Dir; 			  // 电机方向
+		uint32_t tick;			// 计数器
+		uint16_t PreTime1;  // 预定位时间
+		uint16_t PreTime2;	// 预定位时间
+	  uint32_t VfAngleTimeCount;
+		float VfAngleAdd;
+		uint16_t MaxVfAngleSpeed;
+		uint32_t VfVqTimeCount;
+		float VfAngle;
+		float StartVfVq;
+	
+	
 	  float alpha;
 	  float beta;
 
     float u_alpha;
   	float u_beta;
 
+
     float d;
     float q;
+		
+		float outd;
+    float outq;
 
     float sin;
     float cos;

@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "foc.h"
+#include "vofa.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,27 +62,98 @@ void SystemClock_Config(void);
 
 FOC foc;
 float addtheta=0.01;
+float adcRaw[3];
+uint8_t start;
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 
-  foc.RawU = hadc1.Instance->JDR1;
-  foc.RawV = hadc1.Instance->JDR2;
-  foc.RawW = hadc1.Instance->JDR3;
+  foc.RawA = hadc1.Instance->JDR1;
+  foc.RawB = hadc1.Instance->JDR2;
+  foc.RawC = hadc1.Instance->JDR3;
+	adcRaw[0]= foc.RawA-2045.0;
+	adcRaw[1]= foc.RawB-2045.0;
+	adcRaw[2]= foc.RawC-2045.0; 
+	
+	foc.ia = (foc.RawA-2045.0)/4095*3.3f*0.0005/20;
+	foc.ib = (foc.RawB-2045.0)/4095*3.3f*0.0005/20;
+	foc.ic = (foc.RawC-2045.0)/4095*3.3f*0.0005/20;
+	
 
-  static uint16_t test = 0;
-  if (test++ > 65530)
-    test = 0;
+	if(foc.tick++ < 1200)
+	{
+		foc.theta = 0;
+		foc.outd = 0.03;
+		foc.outq = 0;
+	}else if (foc.tick < 2400)
+	{
+		foc.theta = 3.1415926535897f;
+		foc.outd = 0.03;
+		foc.outq = 0;
+	
+	}else  // 斜坡强拉
+	{
+		++foc.VfAngleTimeCount;
+		++foc.VfVqTimeCount;
+		if(foc.VfAngleTimeCount % 6==0)
+		{
+			foc.VfAngleTimeCount = 0;
+			foc.VfAngleAdd += 0.0001;
+		}
+		if(foc.VfAngleAdd > 0.048f){
+			foc.VfAngleAdd = 0.048f;
+		}
+		
+		
+		foc.VfAngle += foc.VfAngleAdd;
+		
+		
+		if(foc.VfVqTimeCount % 56==0)
+		{
+			foc.VfVqTimeCount = 0;
+			foc.StartVfVq += 0.002;
+		}
 
-	foc.theta +=addtheta;
-	foc.d = 0;
-	foc.PWMFullDutyCycle = TIM1->ARR;
-//	foc.q = 0.03;
+		if(foc.StartVfVq > 0.1){
+			foc.StartVfVq = 0.1;
+		}
+		
+		foc.theta = foc.VfAngle;
+		foc.outd = 0.0;
+		foc.outq = foc.StartVfVq;
+//		angle = motorParams->VfAngle;
+//		vd_out = 0;
+//		vq_out = motorParams->StartVfVq;
+	}
+	 
+	
+//	foc.theta +=addtheta;
 	
 	fast_sin_cos(foc.theta,&foc.cos,&foc.sin);
 	
-	// 反park
-	  foc.u_alpha = foc.d * foc.cos - foc.q * foc.sin;
-    foc.u_beta = foc.q * foc.cos + foc.d * foc.sin;
+	// clarke
+	foc.alpha = foc.ia;
+	foc.beta = (foc.ib + 2 * foc.ib) * ONE_BY_SQRT3;
+	
+	
+	
+	
+	//park
+	foc.d = foc.alpha * foc.cos + foc.beta * foc.sin;
+	foc.q = -foc.alpha * foc.sin + foc.beta * foc.cos;
+
+
+	
+	
+
+	foc.PWMFullDutyCycle = TIM1->ARR;
+	
+	
+
+
+	
+	// ipark
+	  foc.u_alpha = foc.outd * foc.cos - foc.outq * foc.sin;
+    foc.u_beta = foc.outq * foc.cos + foc.outd * foc.sin;
 	
 	// svpwm
 	 foc_svm(foc.u_alpha, foc.u_beta,  foc.PWMFullDutyCycle,
@@ -90,9 +162,8 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 	htim1.Instance->CCR1 = foc.tAout;
 	htim1.Instance->CCR2 = foc.tBout;
 	htim1.Instance->CCR3 = foc.tCout;
-  //	HAL_Delay(1000);
 
-  //    HAL_ADCEx_InjectedStart_IT(&hadc1);
+//	Vofa_JustFloat(adcRaw,3);
 }
 
 /* USER CODE END 0 */
@@ -142,7 +213,8 @@ int main(void)
 	 HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1); 
    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
-	 HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+	 HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_4);
+	 
 	 HAL_TIMEx_PWMN_Start(&htim1,TIM_CHANNEL_1);
 	 HAL_TIMEx_PWMN_Start(&htim1,TIM_CHANNEL_2);
 	 HAL_TIMEx_PWMN_Start(&htim1,TIM_CHANNEL_3);
@@ -150,9 +222,9 @@ int main(void)
 	 
 	 
 	 TIM1->ARR = 8000-1;  
-  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 4800-3); // 4800最大占空比  TIM1->CCR4 = 4800-3
+  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_4, 4800-3); // 4800最大占空比  TIM1->CCR4 = 4800-3
                                                      
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,1);
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,1); // 使能DRV8301
 	
   HAL_ADCEx_InjectedStart_IT(&hadc1); // 开启注入中断
 	
