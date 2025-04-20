@@ -635,6 +635,21 @@
               <FileType>5</FileType>
               <FilePath>.\JESC\vofa.h</FilePath>
             </File>
+            <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\JESC\irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>irq.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\JESC\irq.h</FilePath>
+            </File>
+            <File>
+              <FileName>vofa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\JESC\vofa.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
