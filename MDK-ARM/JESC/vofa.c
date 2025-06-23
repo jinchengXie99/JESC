@@ -1,5 +1,4 @@
-#include  "vofa.h"
-
+#include "vofa.h"
 
 // 按printf格式写，最后必须加\r\n
 void Vofa_FireWater(const char *format, ...)
@@ -11,8 +10,8 @@ void Vofa_FireWater(const char *format, ...)
     n = vsnprintf((char *)txBuffer, 100, format, args);
 
     //....在此替换你的串口发送函数...........
-	CDC_Transmit_FS((uint8_t*)txBuffer,n);
-    //HAL_UART_Transmit_DMA(&huart1, (uint8_t *)txBuffer, n);
+    CDC_Transmit_FS((uint8_t *)txBuffer, n);
+    // HAL_UART_Transmit_DMA(&huart1, (uint8_t *)txBuffer, n);
     //......................................
 
     va_end(args);
@@ -31,7 +30,7 @@ void Vofa_JustFloat(float *_data, uint8_t _num)
     memcpy(&tempData[_num * 4], &temp_end[0], 4);
 
     //....在此替换你的串口发送函数...........
-	CDC_Transmit_FS((uint8_t *)tempData,(_num + 1) * 4);
-//  HAL_UART_Transmit_DMA(&huart1, tempData, (_num + 1) * 4);
+    CDC_Transmit_FS((uint8_t *)tempData, (_num + 1) * 4);
+    //  HAL_UART_Transmit_DMA(&huart1, tempData, (_num + 1) * 4);
     //......................................
 }

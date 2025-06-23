@@ -10,40 +10,62 @@
  * @param tBout PWM duty cycle phase B
  * @param tCout PWM duty cycle phase C
  */
- 
+
 void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
-                uint32_t* tAout, uint32_t* tBout, uint32_t* tCout, uint32_t *svm_sector) {
+             uint32_t *tAout, uint32_t *tBout, uint32_t *tCout, uint32_t *svm_sector)
+{
     uint32_t sector;
 
-    if (beta >= 0.0f) {
-        if (alpha >= 0.0f) {
-            //quadrant I
-            if (ONE_BY_SQRT3 * beta > alpha) {
+    if (beta >= 0.0f)
+    {
+        if (alpha >= 0.0f)
+        {
+            // quadrant I
+            if (ONE_BY_SQRT3 * beta > alpha)
+            {
                 sector = 2;
-            } else {
+            }
+            else
+            {
                 sector = 1;
             }
-        } else {
-            //quadrant II
-            if (-ONE_BY_SQRT3 * beta > alpha) {
+        }
+        else
+        {
+            // quadrant II
+            if (-ONE_BY_SQRT3 * beta > alpha)
+            {
                 sector = 3;
-            } else {
+            }
+            else
+            {
                 sector = 2;
             }
         }
-    } else {
-        if (alpha >= 0.0f) {
-            //quadrant IV5
-            if (-ONE_BY_SQRT3 * beta > alpha) {
+    }
+    else
+    {
+        if (alpha >= 0.0f)
+        {
+            // quadrant IV5
+            if (-ONE_BY_SQRT3 * beta > alpha)
+            {
                 sector = 5;
-            } else {
+            }
+            else
+            {
                 sector = 6;
             }
-        } else {
-            //quadrant III
-            if (ONE_BY_SQRT3 * beta > alpha) {
+        }
+        else
+        {
+            // quadrant III
+            if (ONE_BY_SQRT3 * beta > alpha)
+            {
                 sector = 4;
-            } else {
+            }
+            else
+            {
                 sector = 5;
             }
         }
@@ -52,10 +74,12 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     // PWM timings
     uint32_t tA, tB, tC;
 
-    switch (sector) {
+    switch (sector)
+    {
 
     // sector 1-2
-    case 1: {
+    case 1:
+    {
         // Vector on-times
         uint32_t t1 = (alpha - ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t2 = (TWO_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -69,7 +93,8 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     }
 
     // sector 2-3
-    case 2: {
+    case 2:
+    {
         // Vector on-times
         uint32_t t2 = (alpha + ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t3 = (-alpha + ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -83,7 +108,8 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     }
 
     // sector 3-4
-    case 3: {
+    case 3:
+    {
         // Vector on-times
         uint32_t t3 = (TWO_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t4 = (-alpha - ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -97,7 +123,8 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     }
 
     // sector 4-5
-    case 4: {
+    case 4:
+    {
         // Vector on-times
         uint32_t t4 = (-alpha + ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t5 = (-TWO_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -111,7 +138,8 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     }
 
     // sector 5-6
-    case 5: {
+    case 5:
+    {
         // Vector on-times
         uint32_t t5 = (-alpha - ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t6 = (alpha - ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -125,7 +153,8 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     }
 
     // sector 6-1
-    case 6: {
+    case 6:
+    {
         // Vector on-times
         uint32_t t6 = (-TWO_BY_SQRT3 * beta) * PWMFullDutyCycle;
         uint32_t t1 = (alpha + ONE_BY_SQRT3 * beta) * PWMFullDutyCycle;
@@ -143,4 +172,57 @@ void foc_svm(float alpha, float beta, uint32_t PWMFullDutyCycle,
     *tBout = tB;
     *tCout = tC;
     *svm_sector = sector;
+}
+
+
+void VF_Run(FOC *foc)
+{
+  if (foc->tick++ < 0) // 初始位置定位 可提供初始位置的最大扭矩 在强拖中可做可不做
+	{
+		foc->theta = 0;
+		foc->outd = 0.03;
+		foc->outq = 0;
+	}
+	else if (foc->tick < 0)
+	{
+		foc->theta = 3.1415926535897f;
+		foc->outd = 0.03;
+		foc->outq = 0;
+	}
+	else // 斜坡强拉
+	{
+		++foc->VfAngleTimeCount;
+		++foc->VfVqTimeCount;
+		if (foc->VfAngleTimeCount % 10 == 0)
+		{
+			foc->VfAngleTimeCount = 0;
+			foc->VfAngleAdd += 0.003;
+		}
+		if (foc->VfAngleAdd > 0.5)
+		{
+			foc->VfAngleAdd = 0.5;
+		}
+
+		foc->VfAngle += foc->VfAngleAdd;
+
+		if (foc->VfVqTimeCount % 5 == 0)
+		{
+			foc->VfVqTimeCount = 0;
+			foc->StartVfVq += 0.003;
+		}
+
+		if (foc->StartVfVq > 0.1)
+		{
+			foc->StartVfVq = 0.1;
+		}
+
+		foc->theta = foc->VfAngle;
+		foc->outd = 0.0;
+		foc->outq = foc->StartVfVq;
+
+	}
+
+
+
+
 }
