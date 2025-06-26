@@ -57,9 +57,9 @@ Mkfile.old
 dkms.conf
 
 # 如果使用 STM32CubeMX，忽略生成的代码和设置文件
-*.ioc
-*.cproject
-*.project
+#*.ioc
+#*.cproject
+#*.project
 .settings/
 MXSettings.xml
 
