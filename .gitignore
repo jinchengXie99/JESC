@@ -50,6 +50,7 @@
 *.pdb
 *.mod*
 *.cmd
+*.zip
 .tmp_versions/
 modules.order
 Module.symvers
